@@ -1,4 +1,4 @@
-module github.com/JiunMHsu/go-mqtt-publisher
+module github.com/JiunMHsu/dds-go-mqtt-client
 
 go 1.23.1
 

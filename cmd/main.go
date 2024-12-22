@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/JiunMHsu/go-mqtt-publisher/client"
+	"github.com/JiunMHsu/dds-go-mqtt-client/client"
 )
 
 func main() {
