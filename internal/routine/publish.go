@@ -12,9 +12,9 @@ import (
 
 func PublishTemperatureFor(client mqttClient.MqttClient) {
 	for {
-		temprature := randomFloat(-3.0, 3.0)
-		fmt.Printf("publish for %s: %.2f\n", client.Topic, temprature)
+		temprature := randomFloat(-2.0, 2.0)
 		message := "TEMPERATURA " + strconv.FormatFloat(temprature, 'f', 2, 64)
+		fmt.Printf("Publishing message for %s: %s\n", client.Topic, message)
 		client.Publish(message)
 
 		time.Sleep(2 * time.Second)
@@ -22,5 +22,5 @@ func PublishTemperatureFor(client mqttClient.MqttClient) {
 }
 
 func randomFloat(min, max float64) float64 {
-	return math.Round(rand.Float64()*(max-min)*100) / 100
+	return math.Round((rand.Float64()*(max-min)+min)*100) / 100
 }

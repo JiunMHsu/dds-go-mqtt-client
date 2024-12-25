@@ -24,6 +24,7 @@ func main() {
 		"utn-dds-g22/heladeras/heladera-dos",
 		"utn-dds-g22/heladeras/heladera-seis",
 		"utn-dds-g22/heladeras/heladera-tres",
+		"utn-dds-g22/heladeras/heladera-cuatro",
 	}
 
 	var wg sync.WaitGroup
