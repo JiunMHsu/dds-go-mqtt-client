@@ -14,7 +14,8 @@ func PublishTemperatureFor(client mqttClient.MqttClient) {
 	for {
 		temprature := randomFloat(-3.0, 3.0)
 		fmt.Printf("publish for %s: %.2f\n", client.Topic, temprature)
-		client.Publish(strconv.FormatFloat(temprature, 'f', 2, 64))
+		message := "TEMPERATURA " + strconv.FormatFloat(temprature, 'f', 2, 64)
+		client.Publish(message)
 
 		time.Sleep(2 * time.Second)
 	}
