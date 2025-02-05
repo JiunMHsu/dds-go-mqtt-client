@@ -10,21 +10,21 @@ import (
 func main() {
 
 	topics := []string{
-		"utn-dds-g22/heladeras/heladera-diez",
-		"utn-dds-g22/heladeras/heladera-cinco",
-		"utn-dds-g22/heladeras/heladera-nueve",
-		"utn-dds-g22/heladeras/heladera-uno",
-		"utn-dds-g22/heladeras/heladera-catorce",
-		"utn-dds-g22/heladeras/heladera-once",
-		"utn-dds-g22/heladeras/heladera-doce",
-		"utn-dds-g22/heladeras/heladera-quince",
-		"utn-dds-g22/heladeras/heladera-trece",
-		"utn-dds-g22/heladeras/heladera-ocho",
-		"utn-dds-g22/heladeras/heladera-siete",
-		"utn-dds-g22/heladeras/heladera-dos",
-		"utn-dds-g22/heladeras/heladera-seis",
-		"utn-dds-g22/heladeras/heladera-tres",
-		"utn-dds-g22/heladeras/heladera-cuatro",
+		"utn-dds-g22/heladeras/heladera-plaza-de-mayo",
+		"utn-dds-g22/heladeras/heladera-ferro",
+		"utn-dds-g22/heladeras/heladera-atlanta",
+		"utn-dds-g22/heladeras/heladera-utn-lugano",
+		"utn-dds-g22/heladeras/heladera-obelisco",
+		"utn-dds-g22/heladeras/heladera-caminito-de-la-boca",
+		"utn-dds-g22/heladeras/heladera-plaza-italia",
+		"utn-dds-g22/heladeras/heladera-barrio-chino",
+		"utn-dds-g22/heladeras/heladera-facultad-de-derecho",
+		"utn-dds-g22/heladeras/heladera-hospital-piniero",
+		"utn-dds-g22/heladeras/heladera-plaza-serrano",
+		"utn-dds-g22/heladeras/heladera-abasto-shopping",
+		"utn-dds-g22/heladeras/heladera-guerrin",
+		"utn-dds-g22/heladeras/heladera-linea-d",
+		"utn-dds-g22/heladeras/heladera-utn-medrano",
 	}
 
 	var wg sync.WaitGroup
