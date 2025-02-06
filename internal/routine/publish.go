@@ -1,7 +1,6 @@
 package routine
 
 import (
-	"fmt"
 	"math"
 	"math/rand/v2"
 	"strconv"
@@ -14,10 +13,10 @@ func PublishTemperatureFor(client mqttClient.MqttClient) {
 	for {
 		temprature := randomFloat(-2.0, 2.0)
 		message := "TEMPERATURA " + strconv.FormatFloat(temprature, 'f', 2, 64)
-		fmt.Printf("Publishing message for %s: %s\n", client.Topic, message)
+		// fmt.Printf("Publishing message for %s: %s\n", client.Topic, message)
 		client.Publish(message)
 
-		time.Sleep(2 * time.Second)
+		time.Sleep(5 * time.Second)
 	}
 }
 
