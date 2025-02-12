@@ -33,6 +33,15 @@ func NewClient(topic string) MqttClient {
 
 }
 
-func  (client MqttClient) Publish(message string) {
+// TODO: Repensar como inyectar el cliente, topic o handler
+func (client MqttClient) Subscribe() {
+	client.Client.Subscribe(client.Topic, 0, nil)
+}
+
+func (client MqttClient) Unsubscribe() {
+	client.Client.Unsubscribe(client.Topic)
+}
+
+func (client MqttClient) Publish(message string) {
 	client.Client.Publish(client.Topic, 0, false, message)
 }

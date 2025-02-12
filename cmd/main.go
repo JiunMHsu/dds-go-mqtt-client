@@ -8,7 +8,7 @@ import (
 	"sync"
 
 	mqttClient "github.com/JiunMHsu/dds-go-mqtt-client/internal/mqtt-client"
-	"github.com/JiunMHsu/dds-go-mqtt-client/internal/routine"
+	"github.com/JiunMHsu/dds-go-mqtt-client/internal/publish"
 )
 
 func main() {
@@ -33,7 +33,7 @@ func main() {
 
 	for _, topic := range topics {
 		client := mqttClient.NewClient(topic)
-		go routine.PublishTemperatureFor(client)
+		go publish.StartTemperaturePublishingRoutine(client)
 	}
 
 	var wg sync.WaitGroup

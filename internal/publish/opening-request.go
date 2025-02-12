@@ -1,0 +1,3 @@
+package publish
+
+func PublishOpeningRequest() {}
