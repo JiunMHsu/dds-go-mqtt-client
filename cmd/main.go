@@ -6,7 +6,6 @@ import (
 
 	"github.com/JiunMHsu/dds-go-mqtt-client/config"
 	"github.com/JiunMHsu/dds-go-mqtt-client/internal/console"
-	mqttClient "github.com/JiunMHsu/dds-go-mqtt-client/internal/mqtt-client"
 	"github.com/JiunMHsu/dds-go-mqtt-client/internal/publisher"
 )
 
@@ -17,8 +16,7 @@ func main() {
 	if config.Env.PublishTemperature {
 		for _, topic := range topics {
 			fmt.Println("Publishing temperature for topic: ", topic)
-			client := mqttClient.NewClient(topic)
-			go publisher.StartTemperaturePublishingRoutine(client)
+			go publisher.StartTemperaturePublishingRoutine(topic)
 		}
 	}
 

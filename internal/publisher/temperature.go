@@ -1,7 +1,7 @@
 package publisher
 
 import (
-	"strconv"
+	"fmt"
 	"time"
 
 	"github.com/JiunMHsu/dds-go-mqtt-client/config"
@@ -9,20 +9,20 @@ import (
 	"github.com/JiunMHsu/dds-go-mqtt-client/utils"
 )
 
-func PublishTemperatureFor(client mqtt.MqttClient, temprature float64) {
-	message := "TEMPERATURA " + strconv.FormatFloat(temprature, 'f', 2, 64)
+func PublishTemperatureFor(topic string, temprature float64) {
+	message := fmt.Sprintf("TEMPERATURA %.2f", temprature)
+	client := mqtt.NewClient(topic)
 	client.Publish(message)
-
-	time.Sleep(time.Duration(config.Env.PublishTemperatureInterval) * time.Second)
 }
 
-func PublishRandomTemperatureFor(client mqtt.MqttClient) {
+func PublishRandomTemperatureFor(topic string) {
 	temp := utils.RandomFloat(-2.0, 2.0)
-	PublishTemperatureFor(client, temp)
+	PublishTemperatureFor(topic, temp)
 }
 
-func StartTemperaturePublishingRoutine(client mqtt.MqttClient) {
+func StartTemperaturePublishingRoutine(topic string) {
 	for {
-		PublishRandomTemperatureFor(client)
+		PublishRandomTemperatureFor(topic)
+		time.Sleep(time.Duration(config.Env.PublishTemperatureInterval) * time.Second)
 	}
 }
