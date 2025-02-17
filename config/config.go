@@ -20,10 +20,18 @@ var Env = initConfig()
 func initConfig() Config {
 	godotenv.Load()
 
+	topics := getEnvAsSlice("HELADERA_TOPICS", []string{})
+	publishTemp := getEnvAsBool("PUBLISH_TEMPERATURE", false)
+
+	publishTempInterval := getEnvAsInt("PUBLISH_TEMPERATURE_INTERVAL", 5)
+	if publishTempInterval < 1 {
+		publishTempInterval = 1
+	}
+
 	return Config{
-		HeladeraTopics:             getEnvAsSlice("HELADERA_TOPICS", []string{}),
-		PublishTemperature:         getEnvAsBool("PUBLISH_TEMPERATURE", false),
-		PublishTemperatureInterval: getEnvAsInt("PUBLISH_TEMPERATURE_INTERVAL", 5),
+		HeladeraTopics:             topics,
+		PublishTemperature:         publishTemp,
+		PublishTemperatureInterval: publishTempInterval,
 	}
 }
 
