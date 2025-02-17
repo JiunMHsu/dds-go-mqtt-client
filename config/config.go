@@ -3,6 +3,7 @@ package config
 import (
 	"os"
 	"strconv"
+	"strings"
 
 	"github.com/joho/godotenv"
 )
@@ -20,7 +21,7 @@ func initConfig() Config {
 	godotenv.Load()
 
 	return Config{
-		HeladeraTopics:             []string{},
+		HeladeraTopics:             getEnvAsSlice("HELADERA_TOPICS", []string{}),
 		PublishTemperature:         getEnvAsBool("PUBLISH_TEMPERATURE", false),
 		PublishTemperatureInterval: getEnvAsInt("PUBLISH_TEMPERATURE_INTERVAL", 5),
 	}
@@ -52,4 +53,19 @@ func getEnvAsBool(key string, fallback bool) bool {
 	}
 
 	return fallback
+}
+
+func getEnvAsSlice(key string, fallback []string) []string {
+	str := getEnv(key, "")
+	if str == "" {
+		return fallback
+	}
+
+	str = strings.ReplaceAll(str, "\n", "")
+	topics := strings.Split(str, ",")
+	for i := range topics {
+		topics[i] = strings.TrimSpace(topics[i])
+	}
+
+	return topics
 }
