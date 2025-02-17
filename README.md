@@ -16,6 +16,18 @@ FRAUDE
 SOLICITUD_APERTURA <código de tarjeta>
 ```
 
+## Dependencias
+
+[Go >= 1.23.1](https://go.dev/dl/)
+
+## Ejecución
+
+```bash
+git clone https://github.com/JiunMHsu/dds-go-mqtt-client.git
+cd dds-go-mqtt-client
+make run
+```
+
 ## Comandos de consola
 
 `quit` para salir y terminar la ejecución.
