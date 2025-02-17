@@ -1,14 +1,11 @@
 package main
 
 import (
-	"bufio"
-	"fmt"
-	"os"
-	"strings"
 	"sync"
 
+	"github.com/JiunMHsu/dds-go-mqtt-client/internal/console"
 	mqttClient "github.com/JiunMHsu/dds-go-mqtt-client/internal/mqtt-client"
-	"github.com/JiunMHsu/dds-go-mqtt-client/internal/publish"
+	"github.com/JiunMHsu/dds-go-mqtt-client/internal/publisher"
 )
 
 func main() {
@@ -33,33 +30,12 @@ func main() {
 
 	for _, topic := range topics {
 		client := mqttClient.NewClient(topic)
-		go publish.StartTemperaturePublishingRoutine(client)
+		go publisher.StartTemperaturePublishingRoutine(client)
 	}
 
 	var wg sync.WaitGroup
 
 	wg.Add(1)
-	go runConsole(&wg)
+	go console.RunConsole(&wg)
 	wg.Wait()
-}
-
-func runConsole(wg *sync.WaitGroup) {
-	defer wg.Done()
-
-	reader := bufio.NewReader(os.Stdin)
-	fmt.Println("Console -- Type 'exit' to quit")
-
-	for {
-		fmt.Print("> ")
-		input, _ := reader.ReadString('\n')
-		input = strings.TrimSpace(input)
-
-		switch input {
-		case "exit":
-			fmt.Println("Exiting console...")
-			return
-		default:
-			fmt.Println("Unknown command:", input)
-		}
-	}
 }

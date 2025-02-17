@@ -1,4 +1,4 @@
-package publish
+package publisher
 
 import (
 	"strconv"
@@ -10,6 +10,7 @@ import (
 func PublishTemperatureFor(client mqtt.MqttClient, temprature float64) {
 	message := "TEMPERATURA " + strconv.FormatFloat(temprature, 'f', 2, 64)
 	client.Publish(message)
+
 }
 
 func PublishRandomTemperatureFor(client mqtt.MqttClient) {
