@@ -11,7 +11,7 @@ import (
 
 func PublishTemperatureFor(topic string, temprature float64) {
 	message := fmt.Sprintf("TEMPERATURA %.2f", temprature)
-	client := mqtt.NewClient(topic)
+	client := mqtt.GetClient(topic)
 	client.Publish(message)
 }
 

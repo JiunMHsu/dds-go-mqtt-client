@@ -12,7 +12,7 @@ type Config struct {
 	HeladeraTopics []string
 
 	PublishTemperature         bool
-	PublishTemperatureInterval int
+	PublishTemperatureInterval int64
 }
 
 var Env = initConfig()
@@ -43,9 +43,9 @@ func getEnv(key string, fallback string) string {
 	return fallback
 }
 
-func getEnvAsInt(key string, fallback int) int {
+func getEnvAsInt(key string, fallback int64) int64 {
 	str := getEnv(key, "")
-	value, err := strconv.Atoi(str)
+	value, err := strconv.ParseInt(str, 10, 64)
 	if err == nil {
 		return value
 	}

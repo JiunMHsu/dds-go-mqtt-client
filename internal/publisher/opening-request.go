@@ -11,6 +11,6 @@ import (
 // Pero en este caso simplemente se publica la solicitud
 func PublishOpeningRequest(topic, card string) {
 	message := fmt.Sprintf("SOLICITUD_APERTURA %s", card)
-	client := mqtt.NewClient(topic)
+	client := mqtt.GetClient(topic)
 	client.Publish(message)
 }
